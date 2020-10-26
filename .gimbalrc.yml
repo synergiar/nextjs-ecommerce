@@ -1,0 +1,83 @@
+# Specify audits to run. Also include any plugins (like axe)
+audits:
+  - axe
+  - size
+  - lighthouse
+  - heap-snapshot
+  # - unused-source
+
+configs:
+  logger:
+    level: 1
+  buildDir: out
+  comment:
+    # Only show failures in GitHub PR comments.
+    # Useful to pinpoint why a build has failed
+    onlyFailures: false
+  # Heap snapshot settings
+  heap-snapshot:
+    threshold:
+      Documents: 11
+      Frames: 5
+      JSHeapTotalSize: 21889024
+      JSHeapUsedSize: 13685832
+      Nodes: 1250
+      RecalcStyleCount: 129
+      LayoutCount: 35
+
+  # Lighthouse settings
+  lighthouse:
+    # skipAudits:
+    #   - uses-http2
+    #   - redirects-http
+    #   - uses-long-cache-ttl
+    #   - uses-text-compression
+    outputHtml: ./gimbal-artifacts/lighthouse.html
+    threshold:
+      accessibility: 80
+      'best-practices': 80
+      performance: 80
+      pwa: 60
+      seo: 90
+
+  # File and directory size settings
+  size:
+    - path: out/
+      maxSize: 70 MB
+    - path: .next/service-worker.js
+      maxSize: 15 KB
+    - path: out/index.html
+      maxSize: 80 KB
+    - path: out/service-worker.js
+      maxSize: 15 KB
+
+# Locations of reports. Useful for storing artifacts in CI
+outputs:
+  # Only show failures in CLI
+  cli:
+    onlyFailures: false
+  html: ./gimbal-artifacts/results.html
+  json: ./gimbal-artifacts/results.json
+  markdown: ./gimbal-artifacts/results.md
+
+# Plugins
+plugins:
+  # Axe a11y audits
+  - plugin: '@modus/gimbal-plugin-axe'
+    thresholds:
+      aria-allowed-attr: critical
+      aria-hidden-focus: serious
+      color-contrast: serious
+      duplicate-id: minor
+      landmark-one-main: moderate
+      landmark-complementary-is-top-level: moderate
+      meta-viewport: critical
+      region: moderate
+      page-has-heading-one: moderate
+      scrollable-region-focusable: moderate
+      heading-order: moderate
+      label: critical
+      landmark-unique: moderate
+      link-name: serious
+      list: serious
+      listItem: serious

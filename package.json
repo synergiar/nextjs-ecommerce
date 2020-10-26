@@ -1,0 +1,88 @@
+{
+  "name": "next-ecommerce",
+  "description": "E-commerce built in nextjs",
+  "version": "0.1.0",
+  "private": false,
+  "keywords": [
+    "e-commerce",
+    "nextjs",
+    "server-side-rendering",
+    "ssr"
+  ],
+  "author": "Kevin Bardi",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lintFix": "eslint . --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "gimbal-audit": "gimbal audit --config ./.gimbalrc.yml"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "clsx": "^1.1.1",
+    "next": "9.5.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@modus/gimbal": "^1.2.6",
+    "@modus/gimbal-plugin-axe": "^1.2.6",
+    "@modus/gimbal-plugin-last-value": "^1.2.6",
+    "@modus/gimbal-plugin-sqlite": "^1.2.6",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.3",
+    "@types/react": "^16.9.53",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "babel-jest": "^26.6.1",
+    "eslint": "^7.12.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "husky": "^4.3.0",
+    "jest": "^26.6.1",
+    "jest-watch-typeahead": "^0.6.1",
+    "lint-staged": "^10.4.2",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.2",
+    "typescript": "^4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged && yarn type-check && yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "yarn lint"
+    ],
+    "*.{md,json,yml}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synergiar/nextjs-ecommerce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/synergiar/nextjs-ecommerce/issues"
+  },
+  "homepage": "https://nextjs-ecommerce.vercel.io"
+}

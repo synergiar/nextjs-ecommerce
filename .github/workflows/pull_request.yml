@@ -1,0 +1,34 @@
+name: Pull Request Deploy
+on:
+  pull_request:
+    branches:
+      - staging
+      - master
+
+jobs:
+  Build_and_Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install yarn dependencies
+        run: yarn
+      - name: Linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          eslint: true
+          stylelint: true
+          auto_fix: true
+      - name: Build
+        run: yarn run export
+      - name: Performance Budgeting Regression Testing
+        uses: ModusCreateOrg/gimbal/action@master
+        env:
+          GITHUB_AUTH_TOKEN: ${{ secrets.GIMBAL_GITHUB_TOKEN }}
