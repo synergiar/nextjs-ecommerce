@@ -44,7 +44,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
-        run: yarn run export
+        run: yarn build && yarn export
       - name: Performance Budgeting Regression Testing
         uses: ModusCreateOrg/gimbal/action@master
         env:
