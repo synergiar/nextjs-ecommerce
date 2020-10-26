@@ -1,5 +1,7 @@
 # next-ecommerce
 
+[![Coverage Status](https://coveralls.io/repos/github/synergiar/nextjs-ecommerce/badge.svg?branch=master)](https://coveralls.io/github/synergiar/nextjs-ecommerce?branch=master)
+
 Customizable e-commerce built with Nextjs, Typescript, JSS
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
