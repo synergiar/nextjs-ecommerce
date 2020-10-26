@@ -37,7 +37,7 @@ configs:
       accessibility: 80
       'best-practices': 80
       performance: 80
-      pwa: 60
+      pwa: 50
       seo: 90
 
   # File and directory size settings
